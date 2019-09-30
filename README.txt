@@ -6,3 +6,4 @@ Este programa:
 → Faz cadastro de novos clientes;
 → Recupera o PIN caso tenha esquecido;
 → O cliente pode efectuar depósitos, transferir, receber, levantar dinheiro, ou mesmo ver o saldo da sua conta.
+

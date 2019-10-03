@@ -43,7 +43,7 @@ public class mAtributos {
         mAtributos.confirmarLevantamento = confirmarLevantamento;
     }
 
-    public static double getTransferencia() {
+    static double getTransferencia() {
         return transferencia;
     }
 
@@ -67,7 +67,7 @@ public class mAtributos {
         mAtributos.emailTransferir = emailTransferir;
     }
 
-    public static double getDeposito() {
+    static double getDeposito() {
         return deposito;
     }
 
@@ -75,7 +75,7 @@ public class mAtributos {
         mAtributos.deposito = deposito;
     }
 
-    static double getConfirmarDeposito() {
+    public static double getConfirmarDeposito() {
         return confirmarDeposito;
     }
 
@@ -91,7 +91,7 @@ public class mAtributos {
         mAtributos.confirmarTransferenciaAc = confirmarTransferenciaAc;
     }
 
-    static double getConfirmarDepositoAc() {
+    public static double getConfirmarDepositoAc() {
         return confirmarDepositoAc;
     }
 
@@ -115,7 +115,7 @@ public class mAtributos {
         mAtributos.levantamentosAc = levantamentosAc;
     }
 
-    public static double getTransferenciaAc() {
+    static double getTransferenciaAc() {
         return transferenciaAc;
     }
 
@@ -123,7 +123,7 @@ public class mAtributos {
         mAtributos.transferenciaAc = transferenciaAc;
     }
 
-    public static double getDepositoAc() {
+    static double getDepositoAc() {
         return depositoAc;
     }
 

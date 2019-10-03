@@ -21,12 +21,14 @@ public class Levantamentos extends mAtributos {
             try {
                 if ((LoginPin.getPin() == BancoDadosNomePin.getPin()
                         && LoginEmail.getEmail().equals(BancoDadosNomePin.getEmail()))) {
+
                     System.out.println("Quanto deseja levantar?");
                     setLevantamentos(scanner.nextDouble());
                 }
 
                 if ((LoginPin.getPin() == AcPin.getPinNovo()
                         && LoginEmail.getEmail().equals(AcEmail.getEmail()))) {
+
                     System.out.println("Quanto deseja levantar?");
                     setLevantamentosAc(scanner.nextDouble());
                 }
@@ -37,8 +39,18 @@ public class Levantamentos extends mAtributos {
                         && LoginEmail.getEmail().equals(AcEmail.getEmail()))) {
 
                     if (getLevantamentos() < 100 && getLevantamentosAc() < 100) {
-                        setLevantamentos(0);
-                        setLevantamentosAc(0);
+
+                        System.out.println("Montante não disponível, deve levantar no mínimo 100 meticais.");
+                        pDr.desejaRecificar();
+
+                        if (PerguntaDesejaRectificar.getEscolher() == 2) {
+                            MenuAtm menuAtm = new MenuAtm();
+                            menuAtm.menuAtmStart();
+                            break;
+                        }
+
+                    } else if (getLevantamentosAc() < 100 && getLevantamentos() < 100) {
+
                         System.out.println("Montante não disponível, deve levantar no mínimo 100 meticais.");
                         pDr.desejaRecificar();
 
@@ -49,26 +61,73 @@ public class Levantamentos extends mAtributos {
                         }
 
                     } else if (BancoDadosSaldo.getSaldo() < getLevantamentos()
-                            && BancoDadosSaldo.getSaldo() < getLevantamentosAc()) {
-                        System.out.println("Conta sem saldo suficiente para esta operação");
+                            || getLevantamentos() % 100 != 0) {
+
+                        if (getLevantamentos() % 100 != 0) {
+
+                            System.out.println("Motante não disponível, Apenas notas de 100, 200, 500 e, 1000 meticais " +
+                                    "estão disponíveis.");
+
+                        } else {
+                            System.out.println("Conta sem saldo suficiente para esta operação");
+                        }
+
                         pDr.desejaRecificar();
 
                         if (PerguntaDesejaRectificar.getEscolher() == 2) {
+
                             MenuAtm menuAtm = new MenuAtm();
                             menuAtm.menuAtmStart();
                             break;
                         }
 
-                    } else if (getLevantamentos() > 5000 || getLevantamentosAc() > 5000) {
+                    } else if (BancoDadosSaldo.getSaldo() < getLevantamentosAc()
+                            || getLevantamentosAc() % 100 != 0) {
+
+                        if (getLevantamentosAc() % 100 != 0) {
+
+                            System.out.println("Motante não disponível, Apenas notas de 100, 200, 500 e, 1000 meticais " +
+                                    "estão disponíveis.");
+
+                        } else {
+                            System.out.println("Conta sem saldo suficiente para esta operação");
+                        }
+
+                        pDr.desejaRecificar();
+
+                        if (PerguntaDesejaRectificar.getEscolher() == 2) {
+
+                            MenuAtm menuAtm = new MenuAtm();
+                            menuAtm.menuAtmStart();
+                            break;
+                        }
+
+                    } else if (getLevantamentos() > 5000) {
                         setLevantamentos(0);
+
                         System.out.println("Montante não disponível, deve levantar no máximo 5000 meticais P/dia.");
                         pDr.desejaRecificar();
 
                         if (PerguntaDesejaRectificar.getEscolher() == 2) {
+
                             MenuAtm menuAtm = new MenuAtm();
                             menuAtm.menuAtmStart();
                             break;
                         }
+
+                    } else if (getLevantamentosAc() > 5000) {
+                        setLevantamentosAc(0);
+
+                        System.out.println("Montante não disponível, deve levantar no máximo 5000 meticais P/dia.");
+                        pDr.desejaRecificar();
+
+                        if (PerguntaDesejaRectificar.getEscolher() == 2) {
+
+                            MenuAtm menuAtm = new MenuAtm();
+                            menuAtm.menuAtmStart();
+                            break;
+                        }
+
 
                     } else {
 
@@ -104,7 +163,6 @@ public class Levantamentos extends mAtributos {
                                 System.out.println("Saldo disponível: " + BancoDadosSaldo.getSaldo() + " MZN");
 
                             }
-
                             for (int i = 0; i < 4; i++) {
 
                                 try {
@@ -149,7 +207,8 @@ public class Levantamentos extends mAtributos {
         } while ((((getLevantamentos() < 100 && getLevantamentosAc() < 100)
                 || (getLevantamentos() > 5000 || getLevantamentosAc() > 5000)
                 || (BancoDadosSaldo.getSaldo() < getLevantamentos()
-                || BancoDadosSaldo.getSaldo() < getLevantamentosAc())))
+                || BancoDadosSaldo.getSaldo() < getLevantamentosAc()))
+                || (getLevantamentosAc() % 100 != 0 || getLevantamentos() % 100 != 0))
                 && PerguntaDesejaRectificar.getEscolher() == 1);
     }
 }

@@ -18,16 +18,13 @@ public class BancoDadosSaldo {
 
         if (LoginEmail.getEmail().equals(BancoDadosNomePin.getEmail())) {
 
-            BancoDadosSaldo.saldo = 4500 - Levantamentos.getConfirmarLevantamento()
-                    - Transferencias.getConfirmarTransferencia() + Transferencias.getTransferenciaAc()
-                    + Depositos.getDeposito();
+            BancoDadosSaldo.saldo = Depositos.getConfirmarDeposito() + Transferencias.getConfirmarTransferenciaAc()
+                    - Levantamentos.getConfirmarLevantamento() - Transferencias.getConfirmarTransferencia();
 
         } else if (LoginEmail.getEmail().equals(AcEmail.getEmail())) {
 
-            BancoDadosSaldo.saldo = 2000 - Levantamentos.getConfirmarLevantamentoAc()
-                    - Transferencias.getConfirmarTransferenciaAc()
-                    + Transferencias.getTransferencia()
-                    + Depositos.getDepositoAc();
+            BancoDadosSaldo.saldo = Depositos.getConfirmarDepositoAc() + Transferencias.getConfirmarTransferencia()
+                    - Levantamentos.getConfirmarLevantamentoAc() - Transferencias.getConfirmarTransferenciaAc();
         }
     }
 }

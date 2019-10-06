@@ -1,6 +1,6 @@
 # Sobre o sistema bancário
 
-> **Este programa foi inspirado em sistemas usados pelos bancos, como forma de por em prática o conhecimento que adquiri durante estes dois meses que entrei no ramo da programação.**
+> **Este programa foi inspirado em sistemas usados pelos bancos, como forma de por em prática o conhecimento que adquiri sobre POO durante estes dois meses que entrei no ramo da programação.**
 
 ## O que pode fazer com este programa?
 ### No ATM / Caixa eletrónica você pode:
@@ -35,7 +35,7 @@
 
 ## Como executar o programa?
 
-> Para executar este programa dentro da sua IDE, vá até o pacote **main** e rode a classe **MainRun**.
+ Para executar este programa dentro da sua IDE, vá até o pacote **main** e rode a classe **MainRun**.
 > 
 > ### Informação extra:
 > Não se preocupe com maiúsculas e minúsculas, esse programa não é case sensitive.
@@ -43,6 +43,8 @@
 > Este programa não está linkado com nenhum banco de dados, porém existe uma simulação nas classes do pacote **bancodadossimulacao**. onde já têm uma conta pré registada.
 > 
 > Você pode usar a conta pré registada, caso não queira fazer o SIGNUP.
+> 
+> Versão do Java  **"12.0.2"**.
 
 ## Autor do programa:
 **Nome:** Bibiano Geraldo Mangue

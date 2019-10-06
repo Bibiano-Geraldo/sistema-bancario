@@ -32,6 +32,7 @@ public class mAtributos {
     }
 
     static void setConfirmarLevantamentoAc(double confirmarLevantamentoAc) {
+
         mAtributos.confirmarLevantamentoAc = confirmarLevantamentoAc;
     }
 
@@ -40,6 +41,7 @@ public class mAtributos {
     }
 
     static void setConfirmarLevantamento(double confirmarLevantamento) {
+
         mAtributos.confirmarLevantamento = confirmarLevantamento;
     }
 
@@ -48,6 +50,7 @@ public class mAtributos {
     }
 
     static void setTransferencia(double transferencia) {
+
         mAtributos.transferencia = transferencia;
     }
 
@@ -56,6 +59,7 @@ public class mAtributos {
     }
 
     static void setConfirmarTransferencia(double confirmarTransferencia) {
+
         mAtributos.confirmarTransferencia = confirmarTransferencia;
     }
 

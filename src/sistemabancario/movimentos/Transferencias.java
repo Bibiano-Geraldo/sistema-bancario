@@ -12,6 +12,9 @@ import sistemabancario.login.classes.LoginPin;
 import sistemabancario.menuatm.MenuAtm;
 import sistemabancario.paginainicial.PaginaInicial;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Transferencias extends mAtributos {
     private PerguntaDesejaRectificar pDr = new PerguntaDesejaRectificar();
     private OpcoesAceitarRecusar oAR = new OpcoesAceitarRecusar();
@@ -24,6 +27,7 @@ public class Transferencias extends mAtributos {
                     && LoginEmail.getEmail().equals(BancoDadosNomePin.getEmail()))) {
 
                 do {
+
                     System.out.println("Quanto quer transferir?");
                     setTransferencia(scanner.nextDouble());
 
@@ -38,7 +42,7 @@ public class Transferencias extends mAtributos {
                             break;
                         }
 
-                    } else if (BancoDadosSaldo.getSaldo() < getTransferencia()) {
+                    } else if (BancoDadosSaldo.getValor() < getTransferencia()) {
 
                         System.out.println("Conta sem saldo suficiente para esta operação");
                         pDr.desejaRecificar();
@@ -51,7 +55,7 @@ public class Transferencias extends mAtributos {
                     }
 
                 } while ((getTransferencia() < 10
-                        || BancoDadosSaldo.getSaldo() < getTransferencia())
+                        || BancoDadosSaldo.getValor() < getTransferencia())
                         && PerguntaDesejaRectificar.getEscolher() == 1);
 
             } else if ((LoginPin.getPin() == AcPin.getPinNovo()
@@ -72,7 +76,7 @@ public class Transferencias extends mAtributos {
                             break;
                         }
 
-                    } else if (BancoDadosSaldo.getSaldo() < getTransferenciaAc()) {
+                    } else if (BancoDadosSaldo.getValor() < getTransferenciaAc()) {
 
                         System.out.println("Conta sem saldo suficiente para esta operação");
                         pDr.desejaRecificar();
@@ -84,7 +88,7 @@ public class Transferencias extends mAtributos {
                         }
                     }
                 } while ((getTransferenciaAc() < 10
-                        || BancoDadosSaldo.getSaldo() < getTransferenciaAc())
+                        || BancoDadosSaldo.getValor() < getTransferenciaAc())
                         && PerguntaDesejaRectificar.getEscolher() == 1);
             }
 
@@ -141,23 +145,31 @@ public class Transferencias extends mAtributos {
                 oAR.aceitarOuRecusar();
 
                 if (OpcoesAceitarRecusar.getEscolher() == 1) {
+                    Locale locale = new Locale("", "MZ");
+                    NumberFormat numberFormat = NumberFormat.getCurrencyInstance(locale);
+                    numberFormat.setMaximumFractionDigits(2);
 
                     if (getEmailTransferir().equals(BancoDadosNomePin.getEmail())) {
+
                         System.out.println("Estimado(a) cliente, foi registado uma transferência no valor de " +
-                                getTransferenciaAc() + " MZN,");
+                                numberFormat.format(getTransferenciaAc()));
                         System.out.println("Em " + DataHoraSistema.getDataPadrao() + ", as "
                                 + DataHoraSistema.getHoraPadrao() + " para " + BancoDadosNomePin.getNome() +
                                 " " + BancoDadosNomePin.getApelido() + ", " + getEmailTransferir() + ".");
 
                     } else if (getEmailTransferir().equals(AcEmail.getEmail())) {
+
                         System.out.println("Estimado(a) cliente, foi registado uma transferência no valor de " +
-                                getTransferencia() + " MZN,");
+                                numberFormat.format(getTransferencia()));
                         System.out.println("Em " + DataHoraSistema.getDataPadrao() + ", as "
                                 + DataHoraSistema.getHoraPadrao() + " para " + AcEmail.getNome() +
                                 " " + AcEmail.getApelido() + ", " + getEmailTransferir() + ".");
                     }
 
-                    System.out.println("Saldo disponível: " + BancoDadosSaldo.getSaldo() + " MZN");
+                    System.out.println("Saldo disponível: " + BancoDadosSaldo.getSaldo());
+
+                    setTransferencia(getConfirmarTransferencia());
+                    setTransferenciaAc(getConfirmarTransferenciaAc());
 
                     for (int i = 0; i < 4; i++) {
                         try {

@@ -20,6 +20,6 @@ public class AcSexo extends AcAtributos {
                 scanner.nextLine();
             }
 
-        } while (getEscolhaSexo() != 1 && getEscolhaSexo() != 2);
+        } while (getEscolhaSexo() != 1 && getEscolhaSexo() != 2 );
     }
 }

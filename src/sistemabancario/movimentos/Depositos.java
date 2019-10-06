@@ -8,6 +8,9 @@ import sistemabancario.datasdosistema.DataHoraSistema;
 import sistemabancario.menubalcao.MenuBalcao;
 import sistemabancario.paginainicial.PaginaInicial;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Depositos extends mAtributos {
     private PerguntaDesejaRectificar pDr = new PerguntaDesejaRectificar();
     private OpcoesAceitarRecusar oAR = new OpcoesAceitarRecusar();
@@ -74,18 +77,21 @@ public class Depositos extends mAtributos {
                         oAR.aceitarOuRecusar();
 
                         if (OpcoesAceitarRecusar.getEscolher() == 1) {
+                            Locale locale = new Locale("", "MZ");
+                            NumberFormat numberFormat = NumberFormat.getCurrencyInstance(locale);
+                            numberFormat.setMaximumFractionDigits(2);
 
                             if (getEmailDepositar().equals(BancoDadosNomePin.getEmail())) {
 
                                 System.out.println("Estimado(a) cliente, foi registado um depósito no valor de " +
-                                        getDeposito() + " MZN,");
+                                        numberFormat.format(getDeposito()));
                                 System.out.println("Em " + DataHoraSistema.getDataPadrao() + ", as "
                                         + DataHoraSistema.getHoraPadrao() + " para " + BancoDadosNomePin.getNome() +
                                         " " + BancoDadosNomePin.getApelido() + ", " + getEmailDepositar() + ".");
 
                             } else if (getEmailDepositar().equals(AcEmail.getEmail())) {
                                 System.out.println("Estimado(a) cliente, foi registado um depósito no valor de " +
-                                        getDepositoAc() + " MZN,");
+                                        numberFormat.format(getDepositoAc()));
                                 System.out.println("Em " + DataHoraSistema.getDataPadrao() + ", as "
                                         + DataHoraSistema.getHoraPadrao() + " para " + AcEmail.getNome() +
                                         " " + AcEmail.getApelido() + ", " + getEmailDepositar() + ".");

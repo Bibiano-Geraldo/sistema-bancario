@@ -12,7 +12,7 @@ public class DataHoraSistema {
 
     public static String getDataPadrao() {
         Calendar calendar = Calendar.getInstance();
-        Locale locale = new Locale("PT");
+        Locale locale = new Locale("pt","MZ");
         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, locale);
         return df.format(calendar.getTime());
     }

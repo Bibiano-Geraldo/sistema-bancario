@@ -10,7 +10,7 @@ public class VerSaldoConta {
 
     public void verSaldoConta() {
         if (BancoDadosNomePin.getPin() == LoginPin.getPin() || AcPin.getPinNovo() == LoginPin.getPin())
-            System.out.println("Saldo disponível: " + BancoDadosSaldo.getSaldo() + " MZN");
+            System.out.println("Saldo disponível: " + BancoDadosSaldo.getSaldo());
 
         for (int i = 0; i < 2; i++) {
 

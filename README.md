@@ -31,7 +31,7 @@
 
 
 #### 3. Recuper o PIN
-- Caso tenha esquecido o PIN, é possível recuperar o mesmo, porém deve informar ao sistema o nome completo que você usou para abrir a conta junto do seu email.
+- Caso tenha bloqueado a tua conta ou ter esquecido o PIN, é possível recuperar o mesmo, porém deve informar ao sistema o nome completo que você usou para abrir a conta junto do seu email.
 
 ## Como executar o programa?
 

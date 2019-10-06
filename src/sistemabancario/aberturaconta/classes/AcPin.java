@@ -25,6 +25,7 @@ public class AcPin extends AcAtributos {
             } catch (Exception e) {
                 System.out.println("Entrada inválida, apenas dígitos numéricos são permitidos.");
                 scanner.nextLine();
+                acPin();
 
             } catch (AssertionError ae) {
                 System.out.println(getNome() + ", o teu PIN deve ter apenas 4 números positivos.");

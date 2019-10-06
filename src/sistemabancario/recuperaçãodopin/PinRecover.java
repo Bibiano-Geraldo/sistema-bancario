@@ -4,11 +4,13 @@ import sistemabancario.aberturaconta.classes.AcEmail;
 import sistemabancario.aberturaconta.classes.AcPin;
 import sistemabancario.bancodadossimulacao.BancoDadosNomePin;
 import sistemabancario.classesuniversais.PerguntaDesejaRectificar;
+import sistemabancario.login.classes.LoginAtributos;
+import sistemabancario.login.classes.LoginPin;
 import sistemabancario.menubalcao.MenuBalcao;
 
 import java.util.Scanner;
 
-public class PinRecover {
+public class PinRecover{
     private static String email = "fugindo do null";
     private static String nomeCompleto = "fugindo do null";
     private PerguntaDesejaRectificar pDR = new PerguntaDesejaRectificar();
@@ -34,9 +36,10 @@ public class PinRecover {
                     AcPin acPin = new AcPin();
                     acPin.acPin();
 
+                    LoginPin.setBlock(0);
+
                     PrMensagemFinal prMensagemFinal = new PrMensagemFinal();
                     prMensagemFinal.prMensagemFinal();
-
 
                 } else if (getEmail().equals(AcEmail.getEmail())
                         && getNomeCompleto().equals(AcEmail.getNome().
@@ -45,8 +48,11 @@ public class PinRecover {
                     AcPin acPin = new AcPin();
                     acPin.acPin();
 
+                    LoginPin.setBlockAc(0);
+
                     PrMensagemFinal prMensagemFinal = new PrMensagemFinal();
                     prMensagemFinal.prMensagemFinal();
+
 
                 } else {
 
@@ -100,4 +106,5 @@ public class PinRecover {
     private static void setNomeCompleto(String nomeCompleto) {
         PinRecover.nomeCompleto = nomeCompleto;
     }
+
 }
